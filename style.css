@@ -1,0 +1,15 @@
+/*Global Rulesets*/
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  display: block;
+}
+
+/*Time Display Rulesets*/
+section h1 {
+  text-align: center;
+  font-size: 32px;
+}
