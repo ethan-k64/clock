@@ -1,17 +1,18 @@
 // Global Variables
 let h;
-let m;
-let s;
-let hRotation;
-let mRotation;
 let sRotation;
+let mRotation;
+let hRotation;
 
 function setup() {
   // Canvas Props
   const cnv = createCanvas(400, 400);
   cnv.style("margin-left", "auto");
   cnv.style("margin-right", "auto");
-
+  
+  sRotation = second() * 6;
+  setInterval(function() {sRotation = second() * 6}, 1000);
+  
   // Misc Props
   ellipseMode(CENTER);
   angleMode(DEGREES);
@@ -23,16 +24,14 @@ function draw() {
   // Assign Times
   h = hour();
   h = checkTime(h);
-  m = minute();
-  s = second();
-
+  
+  // Assign Rotation
+  sRotation += 0.1;
+  mRotation = minute() * 6 + (second() / 10);
+  hRotation = h * 30 + (minute() / 10) + (second() / 100);
+  
   // Change Time Text
-  document.getElementById("time").innerHTML = `${h}:${m}:${s}`;
-
-  // Assign Rotation Values
-  hRotation = map(h, 0, 11, 0, 360);
-  mRotation = map(m, 0, 59, 0, 360);
-  sRotation = map(s, 0, 59, 0, 360);
+  document.getElementById("time").innerHTML = `${h}:${minute()}:${second()}`;
 
   drawClock();
 }
@@ -61,7 +60,7 @@ function drawClock() {
   // Draw Hour Hand
   push();
   translate(width / 2, height / 2);
-  stroke(0);
+  stroke(255, 0, 0);
   strokeWeight(6);
   rotate(hRotation);
   line(0, 0, 0, -100);
@@ -70,9 +69,18 @@ function drawClock() {
   // Draw Minute Hand
   push();
   translate(width / 2, height / 2);
-  stroke(0);
+  stroke(0, 255, 0);
   strokeWeight(6);
   rotate(mRotation);
+  line(0, 0, 0, -150);
+  pop();
+  
+  // Draw Second Hand
+  push();
+  translate(width / 2, height / 2);
+  stroke(0, 0, 255);
+  strokeWeight(6);
+  rotate(sRotation);
   line(0, 0, 0, -150);
   pop();
 }
