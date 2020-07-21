@@ -60,7 +60,7 @@ function drawClock() {
   // Draw Hour Hand
   push();
   translate(width / 2, height / 2);
-  stroke(255, 0, 0);
+  stroke(0);
   strokeWeight(6);
   rotate(hRotation);
   line(0, 0, 0, -100);
@@ -69,7 +69,7 @@ function drawClock() {
   // Draw Minute Hand
   push();
   translate(width / 2, height / 2);
-  stroke(0, 255, 0);
+  stroke(0);
   strokeWeight(6);
   rotate(mRotation);
   line(0, 0, 0, -150);
@@ -78,7 +78,7 @@ function drawClock() {
   // Draw Second Hand
   push();
   translate(width / 2, height / 2);
-  stroke(0, 0, 255);
+  stroke(0);
   strokeWeight(6);
   rotate(sRotation);
   line(0, 0, 0, -150);
